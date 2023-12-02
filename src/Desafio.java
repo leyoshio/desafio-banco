@@ -2,24 +2,27 @@ import java.util.Scanner;
 
 public class Desafio {
     public static void main(String[] args) {
-        String nome = "Clark Kent";
+        String nomeDoCliente = "Madoc Prado-Sábio";
         String tipoConta = "Corrente";
-        double saldo = 1599.99;
+        double saldoDaConta = 2483.29;
         int opcao = 0;
 
         System.out.println("***********************");
-        System.out.println("\nNome do cliente: " + nome);
-        System.out.println("Tipo conta: " + tipoConta);
-        System.out.println("Saldo atual: " + saldo);
-        System.out.println("\n***********************");
+        System.out.println("Dados do cliente");
+        System.out.println("\nNome do cliente: " + nomeDoCliente);
+        System.out.println("Tipo da conta: " + tipoConta);
+        System.out.println("Saldo atual: " + saldoDaConta);
+        System.out.println("***********************");
 
         String menu = """
-                ** Digite sua opção **
-                1 - Consultar saldo
-                2 - Transferir valor
-                3 - Receber valor 
+                Operações
+                
+                1 - Consultar saldoDaConta
+                2 - Receber valor
+                3 - Transferir valor
                 4 - Sair
                 
+                Escolha uma operação:              
                 """;
         Scanner leitura = new Scanner(System.in);
 
@@ -28,23 +31,23 @@ public class Desafio {
             opcao = leitura.nextInt();
 
             if (opcao == 1){
-                System.out.println("O saldo atualizado é " + saldo);
+                System.out.println("\nO saldoDaConta atualizado é " + saldoDaConta);
             } else if (opcao == 2) {
-                System.out.println("Qual o valor que deseja transferir?");
+                System.out.println("\nValor recebido: ");
                 double valor = leitura.nextDouble();
-                if (valor > saldo) {
-                    System.out.println("Não há saldo para realizar a transferência.");
-                } else {
-                    saldo -= valor;
-                    System.out.println("Novo saldo: " + saldo);
-                }
+                saldoDaConta += valor;
+                System.out.println("\nNovo saldoDaConta: " + saldoDaConta);
             } else if (opcao == 3) {
-                System.out.println("Valor recebido: ");
+                System.out.println("\nQual o valor que deseja transferir?");
                 double valor = leitura.nextDouble();
-                saldo += valor;
-                System.out.println("Novo saldo: " + saldo);
+                if (valor > saldoDaConta) {
+                    System.out.println("\nNão há saldoDaConta suficiente.");
+                } else {
+                    saldoDaConta -= valor;
+                    System.out.println("\nNovo saldoDaConta: " + saldoDaConta);
+                }
             } else if (opcao != 4) {
-                System.out.println("Opção inválida!");
+                System.out.println("\nOpção inválida!");
             }
         }
     }
